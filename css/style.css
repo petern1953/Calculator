@@ -1,6 +1,9 @@
 :root {
     --btnWidth: 100px;
     --btnHeight: 40px;
+        --gap: 5px;
+    --itemBorder: 1px solid rgb(d0d0d0);
+    --itemBorderRadius: 3px;
 }
 
 body {
@@ -9,3 +12,36 @@ body {
     margin: 0;
 }
 
+.container {
+    position: relative;
+    margin: auto;
+    padding: 0 var(--gap);
+    display: block;
+    width: calc(var(--btnWidth) *4 + var(--gap)*5);
+    height: calc(var(--btnHeight) * 6.5 + var(--gap)*7);
+    border: var(--border);
+    border-radius: var(--itemBorderRadius);
+    background-color: rgb(158, 32, 32);
+}
+
+.display {
+    position: absolute;
+    display: block;
+    top: var(--gap);
+    margin: 0 auto;
+    display: inline-block;
+    width: calc(var(--btnWidth) *4 + var(--gap)*5);
+    height: calc(var(--btnHeight) * 1.5);
+    border: var(--border);
+    background-color: rgb(255,255,255);
+    border-radius: var(--itemBorderRadius);
+
+}
+
+#calcInput {
+    position: relative;
+    width: calc(var(--btnWidth) *4 + var(--gap)*3);
+    text-align: right;
+    border: none;
+    margin: 0 auto;
+}
