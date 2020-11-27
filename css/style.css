@@ -1,47 +1,112 @@
 :root {
-    --btnWidth: 100px;
-    --btnHeight: 40px;
-        --gap: 5px;
-    --itemBorder: 1px solid rgb(d0d0d0);
+    --btnWidth: 50px;
+    --btnHeight: 28px;
+    --gap: 10px;
+    --itemBorder: 1px solid #d0d0d0;
     --itemBorderRadius: 3px;
+    --arithmBtnColor: #a0a0a0;
+    --equBtnColor: #ffffa0;
+    --txtColor: #202020;
 }
 
 body {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 12px;
 }
 
-.container {
-    position: relative;
-    margin: auto;
-    padding: 0 var(--gap);
-    display: block;
-    width: calc(var(--btnWidth) *4 + var(--gap)*5);
-    height: calc(var(--btnHeight) * 6.5 + var(--gap)*7);
-    border: var(--border);
+.calculatorDiv {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: stretch;
+    margin: 10px auto 0;
+    padding: var(--gap) var(--gap) 20px;
+    width: calc(var(--btnWidth) * 4 + var(--gap) * 5);
+    height: calc(var(--btnHeight) * 6.5 + var(--gap) * 6);
+    border: var(--itemBorder);
     border-radius: var(--itemBorderRadius);
-    background-color: rgb(158, 32, 32);
 }
 
-.display {
-    position: absolute;
-    display: block;
-    top: var(--gap);
-    margin: 0 auto;
-    display: inline-block;
-    width: calc(var(--btnWidth) *4 + var(--gap)*5);
-    height: calc(var(--btnHeight) * 1.5);
-    border: var(--border);
-    background-color: rgb(255,255,255);
+.displayDiv {
+    display: flex;
+    display: -webkit-flex;
+    width: 100%;
+    height: calc(var(--btnHeight) * 1.4);
+    border: var(--itemBorder);
     border-radius: var(--itemBorderRadius);
-
 }
 
-#calcInput {
-    position: relative;
-    width: calc(var(--btnWidth) *4 + var(--gap)*3);
-    text-align: right;
-    border: none;
-    margin: 0 auto;
+.arithmButtonsDiv {
+    display: flex;
+    display: -webkit-flex;
+    width: 100%;
+    height: calc(var(--btnHeight) * 1.1);
+    flex-direction: row;
+    justify-content: space-between;
+    border-radius: var(--itemBorderRadius);
+}
+
+.arithmButton {
+    width: calc(var(--btnWidth) * 1.1);
+    height: var(--btnHeight);
+    border: var(--itemBorder);
+    border-radius: var(--itemBorderRadius);
+    background-color: var(--arithmBtnColor);
+y;
+    text-align: center;
+    font-size: .8rem;
+    line-height: 1.8rem;
+}
+
+.divSign {
+    font-size: 1.5rem;
+    font-weight: 1000;
+    line-height: 1.6rem;
+}
+
+.tastatureDiv {
+    display: flex;
+    display: -webkit-flex;
+    width: 100%;
+    height: calc(var(--btnHeight) * 4.2 + var(--gap) * 3);
+    flex-direction: row;
+    justify-content: space-between;
+    border-radius: var(--itemBorderRadius);
+    
+}
+
+.numButtonsDiv {
+    display: flex;
+    display: -webkit-flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-content: space-between;
+    width: calc(var(--btnWidth) * 3.3 + var(--gap) * 2);
+    height: 100%;
+    border-radius: var(--itemBorderRadius);
+}
+
+.numButton {
+    border: var(--itemBorder);
+    border-radius: var(--itemBorderRadius);
+    width: calc(var(--btnWidth) * 1.1);
+    height: var(--btnHeight);
+    text-align: center;
+    font-size: .9rem;
+    font-weight: 600;
+    line-height: 1.5rem;
+}
+
+.equButton {
+    border: var(--itemBorder);
+    border-radius: var(--itemBorderRadius);
+    width: calc(var(--btnWidth) * 1.1);
+    text-align: center;
+    font-size: 1.4rem;
+    padding-top: 21%;
+    font-weight: 800;
 }
