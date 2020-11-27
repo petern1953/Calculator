@@ -1,6 +1,6 @@
 :root {
     --btnWidth: 50px;
-    --btnHeight: 30px;
+    --btnHeight: 28px;
     --gap: 10px;
     --itemBorder: 1px solid #d0d0d0;
     --itemBorderRadius: 3px;
@@ -21,94 +21,83 @@ body {
 .calculatorDiv {
     display: flex;
     display: -webkit-flex;
-     /* display: -webkit-box; */
-    /* position: relative; */
     flex-direction: column;
-    /* flex-wrap: wrap; */
     justify-content: space-between;
     align-content: stretch;
     margin: 10px auto 0;
-    padding: calc(var(--gap)*.5) var(--gap);
-    width: calc(var(--btnWidth) *4 + var(--gap)*5);
-    height: calc(var(--btnHeight) * 10.5 + var(--gap)*7);
+    padding: var(--gap) var(--gap) 20px;
+    width: calc(var(--btnWidth) * 4 + var(--gap) * 5);
+    height: calc(var(--btnHeight) * 6.5 + var(--gap) * 6);
     border: var(--itemBorder);
     border-radius: var(--itemBorderRadius);
 }
 
-.displayDiv, .arithmButtonsDiv, .tastatureDiv {
+.displayDiv {
     display: flex;
     display: -webkit-flex;
-
-    flex-grow: 1;
-    /* display: flex;
-    position: relative; */
-    /* flex-basis: auto; */
-    /* display: block; */
-    /* margin: var(--gap); */
-    /* height: 80px; */
-    /* height: calc(--btnHeight * 4.5 ); */
-    margin: calc(var(--gap)*.5) 0;
-        border: var(--itemBorder);
-
+    width: 100%;
+    height: calc(var(--btnHeight) * 1.4);
+    border: var(--itemBorder);
     border-radius: var(--itemBorderRadius);
 }
-.displayDiv {
-    flex-grow: 1.5;
-    border: var(--itemBorder);
-}
+
 .arithmButtonsDiv {
-    flex-grow: .2;
+    display: flex;
+    display: -webkit-flex;
+    width: 100%;
+    height: calc(var(--btnHeight) * 1.1);
     flex-direction: row;
     justify-content: space-between;
-    align-content: stretch;
-    
-}
-.tastatureDiv {
-    display: flex;
-    display: -webkit-flex;
-    flex-direction: row;
-    flex-grow: 6;
-    /* border: var(--itemBorder); */
+    border-radius: var(--itemBorderRadius);
 }
 
 .arithmButton {
+    width: calc(var(--btnWidth) * 1.1);
+    height: var(--btnHeight);
     border: var(--itemBorder);
     border-radius: var(--itemBorderRadius);
-    /* flex-grow: 1; */
     text-align: center;
-    font-size: 1.2rem;
-    width: 53px;
+    font-size: 1rem;
+    line-height: 1.5rem;
+}
+
+.tastatureDiv {
+    display: flex;
+    display: -webkit-flex;
+    width: 100%;
+    height: calc(var(--btnHeight) * 4.2 + var(--gap) * 3);
+    flex-direction: row;
+    justify-content: space-between;
+    border-radius: var(--itemBorderRadius);
+    
 }
 
 .numButtonsDiv {
     display: flex;
     display: -webkit-flex;
     flex-flow: row wrap;
-    /* flex-direction: row; */
     justify-content: space-between;
-
-    border: var(--itemBorder);
+    align-content: space-between;
+    width: calc(var(--btnWidth) * 3.275 + var(--gap) * 2);
+    height: 100%;
     border-radius: var(--itemBorderRadius);
-    width: calc((var(--btnWidth) + var(--gap))*3);
-
-}
-
-.equButton {
-    border: var(--itemBorder);
-    border-radius: var(--itemBorderRadius);
-    width: var(--btnWidth);
-    margin: 0 var(--gap);
-    text-align: center;
-    font-size: 1.2rem;
-    padding-top: 30%;
 }
 
 .numButton {
     border: var(--itemBorder);
     border-radius: var(--itemBorderRadius);
-    width: var(--btnWidth);
+    width: calc(var(--btnWidth) * 1.1);
     height: var(--btnHeight);
     text-align: center;
-    font-size: 1rem;
+    font-size: .9rem;
+    line-height: 1.5rem;
+}
 
+.equButton {
+    border: var(--itemBorder);
+    border-radius: var(--itemBorderRadius);
+    width: calc(var(--btnWidth) * 1.1);
+    text-align: center;
+    font-size: 1.2rem;
+    padding-top: 22%;
 }
