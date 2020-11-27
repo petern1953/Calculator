@@ -41,6 +41,16 @@ body {
     border-radius: var(--itemBorderRadius);
 }
 
+#calcInput {
+    position: relative;
+    width: calc(var(--btnWidth) *4 + var(--gap)*3);
+    text-align: right;
+    border: none;
+    margin: 0 auto;
+    font-size: 1.2rem;
+    color: var(--txtColor);
+}
+
 .arithmButtonsDiv {
     display: flex;
     display: -webkit-flex;
