@@ -4,9 +4,10 @@
     --gap: 10px;
     --itemBorder: 1px solid #d0d0d0;
     --itemBorderRadius: 3px;
-    --arithmBtnColor: #a0a0a0;
-    --equBtnColor: #ffffa0;
-    --txtColor: #202020;
+    --arithmBtnColor: #e0e0e0;
+    --numBtnColor: #f5f5f5;
+    --equBtnColor: #427cd3;
+    --txtColor: #6d6b6b;
 }
 
 body {
@@ -48,6 +49,7 @@ body {
     flex-direction: row;
     justify-content: space-between;
     border-radius: var(--itemBorderRadius);
+    color: var(--txtColor);
 }
 
 .arithmButton {
@@ -56,7 +58,6 @@ body {
     border: var(--itemBorder);
     border-radius: var(--itemBorderRadius);
     background-color: var(--arithmBtnColor);
-y;
     text-align: center;
     font-size: .8rem;
     line-height: 1.8rem;
@@ -76,7 +77,6 @@ y;
     flex-direction: row;
     justify-content: space-between;
     border-radius: var(--itemBorderRadius);
-    
 }
 
 .numButtonsDiv {
@@ -88,11 +88,13 @@ y;
     width: calc(var(--btnWidth) * 3.3 + var(--gap) * 2);
     height: 100%;
     border-radius: var(--itemBorderRadius);
+    color: var(--txtColor);
 }
 
 .numButton {
     border: var(--itemBorder);
     border-radius: var(--itemBorderRadius);
+    background-color: var(--numBtnColor);
     width: calc(var(--btnWidth) * 1.1);
     height: var(--btnHeight);
     text-align: center;
@@ -104,6 +106,8 @@ y;
 .equButton {
     border: var(--itemBorder);
     border-radius: var(--itemBorderRadius);
+    background-color: var(--equBtnColor);
+    color: #f0f0f0;
     width: calc(var(--btnWidth) * 1.1);
     text-align: center;
     font-size: 1.4rem;
