@@ -41,7 +41,7 @@ body {
     border-radius: var(--itemBorderRadius);
 }
 
-#calcInput {
+#calcDisplay {
     position: relative;
     width: calc(var(--btnWidth) *4 + var(--gap)*3);
     text-align: right;
@@ -71,12 +71,14 @@ body {
     text-align: center;
     font-size: .8rem;
     line-height: 1.8rem;
+    -webkit-user-select: none;
 }
 
 .divSign {
     font-size: 1.5rem;
     font-weight: 1000;
     line-height: 1.6rem;
+    -webkit-user-select: none;
 }
 
 .tastatureDiv {
@@ -99,6 +101,7 @@ body {
     height: 100%;
     border-radius: var(--itemBorderRadius);
     color: var(--txtColor);
+    
 }
 
 .numButton {
@@ -111,6 +114,7 @@ body {
     font-size: .9rem;
     font-weight: 600;
     line-height: 1.5rem;
+    -webkit-user-select: none;
 }
 
 .equButton {
@@ -123,4 +127,10 @@ body {
     font-size: 1.4rem;
     padding-top: 21%;
     font-weight: 800;
+        -webkit-user-select: none;
+
+}
+
+.button {
+    cursor: pointer;
 }
