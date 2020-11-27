@@ -20,7 +20,7 @@ const arithmAccu = [];
 // a gombok
 const arithmButtons = document.querySelectorAll('.arithmButton');
 const numButtons = document.querySelectorAll('.num');
-const dotButton = document.querySelectorAll('.dot');
+const dotButton = document.querySelector('.dot');
 const clearButton = document.querySelector('.clear');
 const equButton = document.querySelector('.equButton');
 
@@ -31,6 +31,7 @@ const calcDisplay = document.querySelector('#calcDisplay');
 // nem engedünk meg egymást követően sem két .-ot, sem két műveleti jelet
 let lastCharIsArithmSign = false;
 let lastCharIsDot = false;
+let firstDot = true;
 
 const resetNumericTaylor = () => numericStringTaylor = '';
 resetNumericTaylor();
@@ -55,7 +56,11 @@ const resetWatches = () => {
 // const isLastCharDot = () => lastCharIsDot;
 
 const putCharInNumericTaylor = (char) => numericStringTaylor += char;
-const putCharInNumericAccu = (numChar) => numericAccu[numericAccu.length] = numChar;
+const moveNumberStringInNumericAccu = () => {
+    numericAccu[numericAccu.length] = numericStringTaylor;
+    resetNumericTaylor();
+}
+const putSignInArithmAccu = (sign) => arithmAccu[arithmAccu.length] = sign;
 const putCharInDisplay = (char) => calcDisplay.value += char;
 
 const sendErrorMessage = () => calcDisplay.value = "*** ERROR ***";
@@ -69,6 +74,7 @@ const manageError = () => {
     resetNumericAccu();
     resetArithmAccu();
     resetWatches();
+    firstDot = true;
     clearDisplay();
 }
 
@@ -76,7 +82,8 @@ const manageArithmetics = (button) => {
     let arithmSign = button.getAttribute('value');
     console.log(arithmSign);
     if (!lastCharIsArithmSign && numericStringTaylor.length) {
-        arithmAccu(arithmSign);
+        moveNumberStringInNumericAccu();
+        putSignInArithmAccu(arithmSign);
         putCharInDisplay(arithmSign);
         setLastCharIsArithmSignWatch();
         resetDotWatch();
@@ -88,9 +95,29 @@ const manageArithmetics = (button) => {
 const manageNums = (button) => {
     let numChar = button.getAttribute('value');
     console.log(numChar);
-    putCharInNumericAccu(numChar);
+    putCharInNumericTaylor(numChar);
     putCharInDisplay(numChar);
     resetWatches();
+}
+
+const manageDot = () => {
+    if (!lastCharIsDot && firstDot) {
+        putCharInNumericTaylor('.');
+        putCharInDisplay('.');
+        resetLastCharIsArithmSignWatch();
+        setDotWatch();
+        firstDot = false;
+    } else {
+        manageError();
+    }
+}
+
+const calculate = () => {
+    console.log('calculation in progress');
+}
+
+const resetAll = () => {
+    console.log('total clear');
 }
 
 // gombok aktívvá tétele
@@ -99,6 +126,15 @@ activateArithmButtons();
 
 const activateNumButtons = () => numButtons.forEach((button) => button.addEventListener('click', () => manageNums(button)));
 activateNumButtons();
+
+const activateDotButton = () => dotButton.addEventListener('click', () => manageDot());
+activateDotButton();
+
+const activateEquButton = () => equButton.addEventListener('click', () => calculate());
+activateEquButton();
+
+const activateClearButton = () => clearButton.addEventListener('click', () => resetAll());
+activateClearButton();
 
 
 
