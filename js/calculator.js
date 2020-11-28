@@ -65,7 +65,7 @@ const resetDotWatch = () => noDotYet = true; // ***********
 
 const resetWatches = () => {
     resetLastCharIsArithmSignWatch();
-    resetDotWatch();
+    resetDotWatch(); // *************** hol fordul elő????
 }
 
 // const isLastCharArithmSign = () => lastCharIsArithmSign;
@@ -93,7 +93,7 @@ const manageError = () => {
     resetWatches();
     // javítani noDotYet-re
     // firstDot = true;
-    noDotYet = true;    // ************
+    // noDotYet = true;    // ************ erre nincs is szükség
     clearDisplay();
 }
 
@@ -116,13 +116,13 @@ const manageNums = (button) => {
     console.log(numChar);
     putCharInNumericTaylor(numChar);
     putCharInDisplay(numChar);
-    resetWatches();
+    resetLastCharIsArithmSignWatch();
 }
 
 const manageDot = () => {
     // javítani mindkettőt noDotYet-re
     // if (!lastCharIsDot && firstDot) {
-    if (!noDotYet) {    // *************
+    if (noDotYet) {    // *************
         putCharInNumericTaylor('.');
         putCharInDisplay('.');
         resetLastCharIsArithmSignWatch();
@@ -165,4 +165,10 @@ activateClearButton();
 
 // }
 
-
+const testVariables = () => {
+    console.log('numericAccu: ', numericAccu);
+    console.log('numericStringTaylor: ', numericStringTaylor);
+    console.log('arithmAccu: ', arithmAccu);
+    console.log('lastCharIsArithmSign: ', lastCharIsArithmSign);
+    console.log('noDotYet: ', noDotYet);
+}
