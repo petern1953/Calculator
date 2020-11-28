@@ -39,7 +39,7 @@ body {
     height: calc(var(--btnHeight) * 1.4);
     border: var(--itemBorder);
     border-radius: var(--itemBorderRadius);
-    box-shadow: 2px 2px 2px black inset;
+    box-shadow: 2px 2px 2px #6d6b6b inset;
 }
 
 #calcDisplay {
@@ -137,4 +137,5 @@ body {
 
 .button {
     cursor: pointer;
+    box-shadow: 1px 1px 2px #8b8b8b;
 }
