@@ -29,9 +29,13 @@ const calcDisplay = document.querySelector('#calcDisplay');
 
 // figyeljük, az előző karakter műveleti jel, illetve pont volt-e
 // nem engedünk meg egymást követően sem két .-ot, sem két műveleti jelet
-let lastCharIsArithmSign = false;
-let lastCharIsDot = false;
-let firstDot = true;
+let lastCharIsArithmSign = false;//
+// javítani noDotYet-re
+// let lastCharIsDot = false; ***********
+let noDotYet = true;
+//
+// javítani noDotYet-re
+// let firstDot = true; ************* ez már nem is kell
 
 // toDOs:
 //
@@ -51,9 +55,13 @@ const resetArithmAccu = () => arithmAccu.length = 0;
 resetArithmAccu();
 
 const setLastCharIsArithmSignWatch = () => lastCharIsArithmSign = true;
-const setDotWatch = () => lastCharIsDot = true;
+// javítani noDotYet-re
+// const setDotWatch = () => lastCharIsDot = true;
+const setDotWatch = () => noDotYet = false; // ************
 const resetLastCharIsArithmSignWatch = () => lastCharIsArithmSign = false;
-const resetDotWatch = () => lastCharIsDot = false;
+// javítani noDotYet-re
+// const resetDotWatch = () => lastCharIsDot = false;
+const resetDotWatch = () => noDotYet = true; // ***********
 
 const resetWatches = () => {
     resetLastCharIsArithmSignWatch();
@@ -61,6 +69,7 @@ const resetWatches = () => {
 }
 
 // const isLastCharArithmSign = () => lastCharIsArithmSign;
+// nincs már ilyen: lastCharIsDot
 // const isLastCharDot = () => lastCharIsDot;
 
 const putCharInNumericTaylor = (char) => numericStringTaylor += char;
@@ -82,7 +91,9 @@ const manageError = () => {
     resetNumericAccu();
     resetArithmAccu();
     resetWatches();
-    firstDot = true;
+    // javítani noDotYet-re
+    // firstDot = true;
+    noDotYet = true;    // ************
     clearDisplay();
 }
 
@@ -109,12 +120,16 @@ const manageNums = (button) => {
 }
 
 const manageDot = () => {
-    if (!lastCharIsDot && firstDot) {
+    // javítani mindkettőt noDotYet-re
+    // if (!lastCharIsDot && firstDot) {
+    if (!noDotYet) {    // *************
         putCharInNumericTaylor('.');
         putCharInDisplay('.');
         resetLastCharIsArithmSignWatch();
         setDotWatch();
-        firstDot = false;
+        // javítani noDotYet-re
+        // firstDot = false;
+        // noDotYet = false;   // ************** ez nem is kell
     } else {
         manageError();
     }
