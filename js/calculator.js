@@ -16,7 +16,7 @@
 const numericAccu = [];
 let numericStringTaylor; // az aktuális numerikus adat ebben gyűlik
 const arithmAccu = [];
-let result = 0;
+let result = 0; // lehet, hogy nincs is szükség rá ??????????? ************
 
 // a gombok
 const arithmButtons = document.querySelectorAll('.arithmButton');
@@ -37,7 +37,10 @@ let noDotYet = true;
 //
 // firstDot helyett noDotYet kell, és akkor nem kell a lastCharIsDot sem ! fulfilled
 // a kijelzőt (kezdeti 0-t, eredményt) törölni kell, ha még üres a  numericStringTaylor ! fulfilled
+
 // kell egy  result  változó -- ebbe kerül az eredmény + a kijelzőre
+// de lehet, hogy nincs is szükség rá **********************-?????
+
 // a calculate() hiányzik -- = jel leütésére aktiválni ! fulfilled
 // a resetAll-nak törölnie kell a  result-ot  is, és a  noDotYet-et true-ra ! fulfilled
 // tesztelés után a resultot a returnbe közvetlenül
@@ -139,8 +142,19 @@ const manageDot = () => {
 const calculate = () => {
     console.log('calculation in progress');
     moveNumberStringInNumericAccu();
+
     // tesztelés után ezt a returnbe közvetlenül *************
-    result = numericAccu.reduce((sum, item, idx) => console.log(item, idx));
+    // result = numericAccu.map((item) => parseFloat(item))
+    //     .reduce((total, currentItem, idx) => {
+    //         (arithmAccu[idx - 1] == '+') ? prevItem + currentItem :
+    //             (arithmAccu[idx - 1] == '-') ? prevItem - currentItem :
+    //                 (arithmAccu[idx - 1] == '*') ? prevItem * currentItem : prevItem / currentItem;
+    //     });
+    result = numericAccu.map((item) => parseFloat(item))
+        .reduce((total, currentItem, idx) =>
+            (arithmAccu[idx - 1] == '+') ? total + currentItem :
+                (arithmAccu[idx - 1] == '-') ? total - currentItem :
+                    (arithmAccu[idx - 1] == '*') ? total * currentItem : total / currentItem);
     console.log(result);
     return result;
 }
@@ -157,9 +171,11 @@ activateDotButton();
 
 const activateEquButton = () => equButton.addEventListener('click', () => {
     let temp = calculate();
+    console.log(temp);
+    let t = temp.toString();
     resetAll();
-    displayResult(temp);
-    moveResult2NumericTaylor(temp);
+    displayResult(t);
+    moveResult2NumericTaylor(t);
 });
 activateEquButton();
 
