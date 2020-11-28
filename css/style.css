@@ -39,14 +39,17 @@ body {
     height: calc(var(--btnHeight) * 1.4);
     border: var(--itemBorder);
     border-radius: var(--itemBorderRadius);
+    box-shadow: 2px 2px 2px black inset;
 }
 
 #calcDisplay {
     position: relative;
-    width: calc(var(--btnWidth) *4 + var(--gap)*3);
+    /* width: calc(var(--btnWidth) *4 + var(--gap)*3); */
+    width: 96%;
+    height: 85%;
     text-align: right;
     border: none;
-    margin: 0 auto;
+    margin: 3px auto 0;
     font-size: 1.2rem;
     background-color: #fff;
     color: var(--txtColor);
