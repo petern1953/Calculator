@@ -22,7 +22,6 @@
 const numericAccu = [];
 let numericStringTaylor; // az aktuális numerikus adat ebben gyűlik
 const arithmAccu = [];
-// let result = 0; // lehet, hogy nincs is szükség rá ??????????? ************
 
 // a gombok
 const arithmButtons = document.querySelectorAll('.arithmButton');
@@ -40,8 +39,6 @@ const calcDisplay = document.querySelector('#calcDisplay');
 // nem engedünk meg egymást követően sem két .-ot, sem két műveleti jelet
 let lastCharIsArithmSign = false;
 let noDotYet = true;
-
-// const resetResult = () => result = 0;
 
 const resetNumericTaylor = () => numericStringTaylor = '';
 resetNumericTaylor();
@@ -86,13 +83,11 @@ const sendErrorMessage = () => calcDisplay.value = "*** ERROR ***";
 const clearDisplay = () => calcDisplay.value = '0';
 
 const resetAll = () => {
-    // console.log('total clear');
     resetNumericTaylor();
     resetNumericAccu();
     resetArithmAccu();
     resetWatches();
     clearDisplay();
-    // resetResult();
 }
 
 const manageError = () => {
@@ -102,7 +97,6 @@ const manageError = () => {
 
 const manageArithmetics = (button) => {
     let arithmSign = button.getAttribute('value');
-    // console.log(arithmSign);
     if (!lastCharIsArithmSign && numericStringTaylor.length && numericStringTaylor != '.') {
         moveNumberStringInNumericAccu();
         putSignInArithmAccu(arithmSign);
@@ -116,7 +110,6 @@ const manageArithmetics = (button) => {
 
 const manageNums = (button) => {
     let numChar = button.getAttribute('value');
-    // console.log(numChar);
     putCharInDisplay(numChar);
     putCharInNumericTaylor(numChar);
     resetLastCharIsArithmSignWatch();
@@ -134,7 +127,6 @@ const manageDot = () => {
 }
 
 const calculate = () => {
-    // console.log('calculation in progress');
     moveNumberStringInNumericAccu();
 
     return numericAccu.map((item) => parseFloat(item))
