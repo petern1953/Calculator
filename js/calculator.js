@@ -30,20 +30,8 @@ const calcDisplay = document.querySelector('#calcDisplay');
 
 // figyeljük, az előző karakter műveleti jel, illetve pont volt-e
 // nem engedünk meg egymást követően sem két .-ot, sem két műveleti jelet
-let lastCharIsArithmSign = false;    //
+let lastCharIsArithmSign = false;
 let noDotYet = true;
-
-// toDOs:
-//
-// firstDot helyett noDotYet kell, és akkor nem kell a lastCharIsDot sem ! fulfilled
-// a kijelzőt (kezdeti 0-t, eredményt) törölni kell, ha még üres a  numericStringTaylor ! fulfilled
-
-// kell egy  result  változó -- ebbe kerül az eredmény + a kijelzőre
-// de lehet, hogy nincs is szükség rá **********************-?????
-
-// a calculate() hiányzik -- = jel leütésére aktiválni ! fulfilled
-// a resetAll-nak törölnie kell a  result-ot  is, és a  noDotYet-et true-ra ! fulfilled
-// tesztelés után a resultot a returnbe közvetlenül
 
 const resetResult = () => result = 0;
 
@@ -57,16 +45,14 @@ const resetArithmAccu = () => arithmAccu.length = 0;
 resetArithmAccu();
 
 const setLastCharIsArithmSignWatch = () => lastCharIsArithmSign = true;
-const setDotWatch = () => noDotYet = false; // ************
+const setDotWatch = () => noDotYet = false;
 const resetLastCharIsArithmSignWatch = () => lastCharIsArithmSign = false;
-const resetDotWatch = () => noDotYet = true; // ***********
+const resetDotWatch = () => noDotYet = true;
 
 const resetWatches = () => {
     resetLastCharIsArithmSignWatch();
-    resetDotWatch(); // *************** hol fordul elő????
+    resetDotWatch();
 }
-
-// const isLastCharArithmSign = () => lastCharIsArithmSign;
 
 const putCharInNumericTaylor = (char) => {
     numericStringTaylor += char;
@@ -92,7 +78,7 @@ const sendErrorMessage = () => calcDisplay.value = "*** ERROR ***";
 const clearDisplay = () => calcDisplay.value = '0';
 
 const resetAll = () => {
-    console.log('total clear');
+    // console.log('total clear');
     resetNumericTaylor();
     resetNumericAccu();
     resetArithmAccu();
@@ -108,7 +94,7 @@ const manageError = () => {
 
 const manageArithmetics = (button) => {
     let arithmSign = button.getAttribute('value');
-    console.log(arithmSign);
+    // console.log(arithmSign);
     if (!lastCharIsArithmSign && numericStringTaylor.length && numericStringTaylor != '.') {
         moveNumberStringInNumericAccu();
         putSignInArithmAccu(arithmSign);
@@ -122,7 +108,7 @@ const manageArithmetics = (button) => {
 
 const manageNums = (button) => {
     let numChar = button.getAttribute('value');
-    console.log(numChar);
+    // console.log(numChar);
     putCharInDisplay(numChar);
     putCharInNumericTaylor(numChar);
     resetLastCharIsArithmSignWatch();
@@ -140,16 +126,16 @@ const manageDot = () => {
 }
 
 const calculate = () => {
-    console.log('calculation in progress');
+    // console.log('calculation in progress');
     moveNumberStringInNumericAccu();
 
-    result = numericAccu.map((item) => parseFloat(item))
+    return numericAccu.map((item) => parseFloat(item))
         .reduce((total, currentItem, idx) =>
             (arithmAccu[idx - 1] == '+') ? total + currentItem :
                 (arithmAccu[idx - 1] == '-') ? total - currentItem :
                     (arithmAccu[idx - 1] == '*') ? total * currentItem : total / currentItem);
-    console.log(result);
-    return result;
+    // console.log(result);
+    // return result;
 }
 
 // gombok aktívvá tétele
@@ -164,7 +150,7 @@ activateDotButton();
 
 const activateEquButton = () => equButton.addEventListener('click', () => {
     let temp = calculate();
-    console.log(temp);
+    // console.log(temp);
     let t = temp.toString();
     resetAll();
     displayResult(t);
@@ -175,7 +161,7 @@ activateEquButton();
 const activateClearButton = () => clearButton.addEventListener('click', () => resetAll());
 activateClearButton();
 
-// just while testing
+// just in test phase
 const testVariables = () => {
     console.log('numericAccu: ', numericAccu);
     console.log('numericStringTaylor: ', numericStringTaylor);
