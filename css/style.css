@@ -142,5 +142,10 @@ body {
 }
 
 .clicked {
-    box-shadow: 1px 1px 1px #222222;
+    box-shadow: 1px 1px 1px rgb(100, 100, 100);
+    background-color: #c4c4c4;
+}
+
+.clicked.equButton {
+    background-color: #427cff;
 }

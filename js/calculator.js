@@ -148,9 +148,8 @@ const calculate = () => {
 
 const animateButton = (button) => {
     button.classList.add('clicked');
-    setTimeout((() => button.classList.remove('clicked')), 2000);
+    setTimeout((() => button.classList.remove('clicked')), 100);
 }
-
 
 // gombok aktívvá tétele
 const activateArithmButtons = () => arithmButtons.forEach((button) => button.addEventListener('click', () => manageArithmetics(button)));
