@@ -10,13 +10,19 @@
 // Az egyenlőségjelre kattintva az inputban megjelenik a művelet(ek) eredménye
 // A C gomb törli az input mező tartamát
 
+// ************         COMMENTS         *************
+//
+// Memory button híján a műveletek (= utáni) eredménye  
+// további láncműveletekre használható, mintha csak 
+// kézzel vittük volna be azt, közvetlenül
+
 'use strict'
 
 // ezekben gyűjtjük a kijelzöbe kerülő számokat / aritmetikai műveleteket
 const numericAccu = [];
 let numericStringTaylor; // az aktuális numerikus adat ebben gyűlik
 const arithmAccu = [];
-let result = 0; // lehet, hogy nincs is szükség rá ??????????? ************
+// let result = 0; // lehet, hogy nincs is szükség rá ??????????? ************
 
 // a gombok
 const arithmButtons = document.querySelectorAll('.arithmButton');
@@ -24,6 +30,8 @@ const numButtons = document.querySelectorAll('.num');
 const dotButton = document.querySelector('.dot');
 const clearButton = document.querySelector('.clear');
 const equButton = document.querySelector('.equButton');
+// a gombok animálásához
+const buttons = document.querySelector('.button');
 
 // a kijelző
 const calcDisplay = document.querySelector('#calcDisplay');
@@ -33,7 +41,7 @@ const calcDisplay = document.querySelector('#calcDisplay');
 let lastCharIsArithmSign = false;
 let noDotYet = true;
 
-const resetResult = () => result = 0;
+// const resetResult = () => result = 0;
 
 const resetNumericTaylor = () => numericStringTaylor = '';
 resetNumericTaylor();
@@ -84,7 +92,7 @@ const resetAll = () => {
     resetArithmAccu();
     resetWatches();
     clearDisplay();
-    resetResult();
+    // resetResult();
 }
 
 const manageError = () => {
@@ -138,6 +146,12 @@ const calculate = () => {
     // return result;
 }
 
+const animateButton = (button) => {
+    button.classList.add('clicked');
+    setTimeout((() => button.classList.remove('clicked')), 1000);
+}
+
+
 // gombok aktívvá tétele
 const activateArithmButtons = () => arithmButtons.forEach((button) => button.addEventListener('click', () => manageArithmetics(button)));
 activateArithmButtons();
@@ -160,6 +174,9 @@ activateEquButton();
 
 const activateClearButton = () => clearButton.addEventListener('click', () => resetAll());
 activateClearButton();
+
+const activateButtons = () => buttons.forEach((button) => button.addEventListener('click', () => animateButton(button)));
+activateButtons();
 
 // just in test phase
 const testVariables = () => {
