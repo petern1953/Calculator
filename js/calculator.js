@@ -33,6 +33,14 @@ let lastCharIsArithmSign = false;
 let lastCharIsDot = false;
 let firstDot = true;
 
+// toDOs:
+//
+// firstDot helyett noDotYet kell, és akkor nem kell a lastCharIsDot sem !
+// kell egy  result  változó -- ebbe kerül az eredmény + a kijelzőre
+// a kijelzőt (kezdeti 0-t, eredményt) törölni kell, ha még üres a  numericStringTaylor
+// a calculate() hiányzik -- = jel leütésére aktiválni
+// a resetAll-nak törölnie kell a  result-ot  is, és a  noDotYet-et true-ra
+
 const resetNumericTaylor = () => numericStringTaylor = '';
 resetNumericTaylor();
 
