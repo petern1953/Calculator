@@ -40,6 +40,7 @@ let noDotYet = true;
 // kell egy  result  változó -- ebbe kerül az eredmény + a kijelzőre
 // a calculate() hiányzik -- = jel leütésére aktiválni ! fulfilled
 // a resetAll-nak törölnie kell a  result-ot  is, és a  noDotYet-et true-ra ! fulfilled
+// tesztelés után a resultot a returnbe közvetlenül
 
 const resetResult = () => result = 0;
 
@@ -68,14 +69,21 @@ const putCharInNumericTaylor = (char) => {
     numericStringTaylor += char;
 }
 
+const moveResult2NumericTaylor = (result) => {
+    numericStringTaylor = result;
+}
+
 const moveNumberStringInNumericAccu = () => {
     numericAccu[numericAccu.length] = numericStringTaylor;
     resetNumericTaylor();
 }
 const putSignInArithmAccu = (sign) => arithmAccu[arithmAccu.length] = sign;
+
 const putCharInDisplay = (char) => {
     calcDisplay.value = (calcDisplay.value == '0') ? char : calcDisplay.value + char;
 }
+
+const displayResult = (result) => calcDisplay.value = result;
 
 const sendErrorMessage = () => calcDisplay.value = "*** ERROR ***";
 const clearDisplay = () => calcDisplay.value = '0';
@@ -131,7 +139,10 @@ const manageDot = () => {
 const calculate = () => {
     console.log('calculation in progress');
     moveNumberStringInNumericAccu();
-
+    // tesztelés után ezt a returnbe közvetlenül *************
+    result = numericAccu.reduce((sum, item, idx) => console.log(item, idx));
+    console.log(result);
+    return result;
 }
 
 // gombok aktívvá tétele
@@ -144,7 +155,12 @@ activateNumButtons();
 const activateDotButton = () => dotButton.addEventListener('click', () => manageDot());
 activateDotButton();
 
-const activateEquButton = () => equButton.addEventListener('click', () => calculate());
+const activateEquButton = () => equButton.addEventListener('click', () => {
+    let temp = calculate();
+    resetAll();
+    displayResult(temp);
+    moveResult2NumericTaylor(temp);
+});
 activateEquButton();
 
 const activateClearButton = () => clearButton.addEventListener('click', () => resetAll());
