@@ -86,7 +86,7 @@ const manageError = () => {
 const manageArithmetics = (button) => {
     let arithmSign = button.getAttribute('value');
     console.log(arithmSign);
-    if (!lastCharIsArithmSign && numericStringTaylor.length) {
+    if (!lastCharIsArithmSign && numericStringTaylor.length && numericStringTaylor != '.') {
         moveNumberStringInNumericAccu();
         putSignInArithmAccu(arithmSign);
         putCharInDisplay(arithmSign);
