@@ -16,6 +16,7 @@
 const numericAccu = [];
 let numericStringTaylor; // az aktuális numerikus adat ebben gyűlik
 const arithmAccu = [];
+let result = 0;
 
 // a gombok
 const arithmButtons = document.querySelectorAll('.arithmButton');
@@ -35,10 +36,12 @@ let noDotYet = true;
 // toDOs:
 //
 // firstDot helyett noDotYet kell, és akkor nem kell a lastCharIsDot sem ! fulfilled
-// a kijelzőt (kezdeti 0-t, eredményt) törölni kell, ha még üres a  numericStringTaylor
+// a kijelzőt (kezdeti 0-t, eredményt) törölni kell, ha még üres a  numericStringTaylor ! fulfilled
 // kell egy  result  változó -- ebbe kerül az eredmény + a kijelzőre
-// a calculate() hiányzik -- = jel leütésére aktiválni
-// a resetAll-nak törölnie kell a  result-ot  is, és a  noDotYet-et true-ra
+// a calculate() hiányzik -- = jel leütésére aktiválni ! fulfilled
+// a resetAll-nak törölnie kell a  result-ot  is, és a  noDotYet-et true-ra ! fulfilled
+
+const resetResult = () => result = 0;
 
 const resetNumericTaylor = () => numericStringTaylor = '';
 resetNumericTaylor();
@@ -84,6 +87,7 @@ const resetAll = () => {
     resetArithmAccu();
     resetWatches();
     clearDisplay();
+    resetResult();
 }
 
 const manageError = () => {
@@ -126,6 +130,8 @@ const manageDot = () => {
 
 const calculate = () => {
     console.log('calculation in progress');
+    moveNumberStringInNumericAccu();
+
 }
 
 // gombok aktívvá tétele
