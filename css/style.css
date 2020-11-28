@@ -30,6 +30,7 @@ body {
     height: calc(var(--btnHeight) * 6.5 + var(--gap) * 6);
     border: var(--itemBorder);
     border-radius: var(--itemBorderRadius);
+    box-shadow: 4px 4px 4px #8b8b8b;
 }
 
 .displayDiv {
