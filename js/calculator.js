@@ -129,7 +129,7 @@ const manageNums = (button) => {
 }
 
 const manageDot = () => {
-    if (noDotYet) {    // *************
+    if (!numericStringTaylor.includes('.') && noDotYet) {
         putCharInNumericTaylor('.');
         putCharInDisplay('.');
         resetLastCharIsArithmSignWatch();
@@ -143,13 +143,6 @@ const calculate = () => {
     console.log('calculation in progress');
     moveNumberStringInNumericAccu();
 
-    // tesztelés után ezt a returnbe közvetlenül *************
-    // result = numericAccu.map((item) => parseFloat(item))
-    //     .reduce((total, currentItem, idx) => {
-    //         (arithmAccu[idx - 1] == '+') ? prevItem + currentItem :
-    //             (arithmAccu[idx - 1] == '-') ? prevItem - currentItem :
-    //                 (arithmAccu[idx - 1] == '*') ? prevItem * currentItem : prevItem / currentItem;
-    //     });
     result = numericAccu.map((item) => parseFloat(item))
         .reduce((total, currentItem, idx) =>
             (arithmAccu[idx - 1] == '+') ? total + currentItem :
