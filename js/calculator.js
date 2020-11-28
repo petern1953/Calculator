@@ -134,8 +134,6 @@ const calculate = () => {
             (arithmAccu[idx - 1] == '+') ? total + currentItem :
                 (arithmAccu[idx - 1] == '-') ? total - currentItem :
                     (arithmAccu[idx - 1] == '*') ? total * currentItem : total / currentItem);
-    // console.log(result);
-    // return result;
 }
 
 const animateButton = (button) => {
@@ -155,7 +153,6 @@ activateDotButton();
 
 const activateEquButton = () => equButton.addEventListener('click', () => {
     let temp = calculate();
-    // console.log(temp);
     let t = temp.toString();
     resetAll();
     displayResult(t);
