@@ -31,7 +31,7 @@ const dotButton = document.querySelector('.dot');
 const clearButton = document.querySelector('.clear');
 const equButton = document.querySelector('.equButton');
 // a gombok animálásához
-const buttons = document.querySelector('.button');
+const buttons = document.querySelectorAll('.button');
 
 // a kijelző
 const calcDisplay = document.querySelector('#calcDisplay');
@@ -148,7 +148,7 @@ const calculate = () => {
 
 const animateButton = (button) => {
     button.classList.add('clicked');
-    setTimeout((() => button.classList.remove('clicked')), 1000);
+    setTimeout((() => button.classList.remove('clicked')), 2000);
 }
 
 
