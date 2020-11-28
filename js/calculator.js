@@ -30,16 +30,11 @@ const calcDisplay = document.querySelector('#calcDisplay');
 // figyeljük, az előző karakter műveleti jel, illetve pont volt-e
 // nem engedünk meg egymást követően sem két .-ot, sem két műveleti jelet
 let lastCharIsArithmSign = false;//
-// javítani noDotYet-re
-// let lastCharIsDot = false; ***********
 let noDotYet = true;
-//
-// javítani noDotYet-re
-// let firstDot = true; ************* ez már nem is kell
 
 // toDOs:
 //
-// firstDot helyett noDotYet kell, és akkor nem kell a lastCharIsDot sem !
+// firstDot helyett noDotYet kell, és akkor nem kell a lastCharIsDot sem ! fulfilled
 // kell egy  result  változó -- ebbe kerül az eredmény + a kijelzőre
 // a kijelzőt (kezdeti 0-t, eredményt) törölni kell, ha még üres a  numericStringTaylor
 // a calculate() hiányzik -- = jel leütésére aktiválni
@@ -55,12 +50,8 @@ const resetArithmAccu = () => arithmAccu.length = 0;
 resetArithmAccu();
 
 const setLastCharIsArithmSignWatch = () => lastCharIsArithmSign = true;
-// javítani noDotYet-re
-// const setDotWatch = () => lastCharIsDot = true;
 const setDotWatch = () => noDotYet = false; // ************
 const resetLastCharIsArithmSignWatch = () => lastCharIsArithmSign = false;
-// javítani noDotYet-re
-// const resetDotWatch = () => lastCharIsDot = false;
 const resetDotWatch = () => noDotYet = true; // ***********
 
 const resetWatches = () => {
@@ -69,8 +60,6 @@ const resetWatches = () => {
 }
 
 // const isLastCharArithmSign = () => lastCharIsArithmSign;
-// nincs már ilyen: lastCharIsDot
-// const isLastCharDot = () => lastCharIsDot;
 
 const putCharInNumericTaylor = (char) => numericStringTaylor += char;
 const moveNumberStringInNumericAccu = () => {
@@ -91,9 +80,6 @@ const manageError = () => {
     resetNumericAccu();
     resetArithmAccu();
     resetWatches();
-    // javítani noDotYet-re
-    // firstDot = true;
-    // noDotYet = true;    // ************ erre nincs is szükség
     clearDisplay();
 }
 
@@ -120,16 +106,11 @@ const manageNums = (button) => {
 }
 
 const manageDot = () => {
-    // javítani mindkettőt noDotYet-re
-    // if (!lastCharIsDot && firstDot) {
     if (noDotYet) {    // *************
         putCharInNumericTaylor('.');
         putCharInDisplay('.');
         resetLastCharIsArithmSignWatch();
         setDotWatch();
-        // javítani noDotYet-re
-        // firstDot = false;
-        // noDotYet = false;   // ************** ez nem is kell
     } else {
         manageError();
     }
@@ -159,12 +140,7 @@ activateEquButton();
 const activateClearButton = () => clearButton.addEventListener('click', () => resetAll());
 activateClearButton();
 
-
-
-// const manageButtonClick = (button) => {
-
-// }
-
+// just while testing
 const testVariables = () => {
     console.log('numericAccu: ', numericAccu);
     console.log('numericStringTaylor: ', numericStringTaylor);
