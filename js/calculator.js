@@ -133,7 +133,7 @@ const calculate = () => {
         .reduce((total, currentItem, idx) =>
             (arithmAccu[idx - 1] == '+') ? total + currentItem :
                 (arithmAccu[idx - 1] == '-') ? total - currentItem :
-                    (arithmAccu[idx - 1] == '*') ? total * currentItem : total / currentItem);
+                    (arithmAccu[idx - 1] == '*') ? total * 10 * currentItem / 10 : total / currentItem);
 }
 
 const animateButton = (button) => {
